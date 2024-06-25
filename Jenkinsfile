@@ -1,20 +1,33 @@
 pipeline {
     agent any
 
+    triggers {
+        githubPush()
+    }
+
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                script {
+                    // Your build steps go here
+                    echo 'Building...'
+                }
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                script {
+                    // Your test steps go here
+                    echo 'Testing...'
+                }
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                script {
+                    // Your deploy steps go here
+                    echo 'echo Deploying...'
+                }
             }
         }
     }
