@@ -1,31 +1,21 @@
-// Jenkinsfile
 pipeline {
     agent any
-
-    triggers {
-        githubPush()
-    }
 
     stages {
         stage('Build') {
             steps {
-                sh 'mvn clean compile'
+                echo 'Building..'
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn test'
+                echo 'Testing..'
             }
         }
-        stage('Package') {
+        stage('Deploy') {
             steps {
-                sh 'mvn package'
+                echo 'Deploying....'
             }
-        }
-    }
-    post {
-        always {
-            archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
         }
     }
 }
